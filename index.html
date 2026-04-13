@@ -13,6 +13,7 @@
   <meta name="theme-color" content="#2c2a27">
 
   <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <style>
     :root {
@@ -41,7 +42,7 @@
       height: 70vh;
       min-height: 500px;
       background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), 
-                  url('file:///Users/danielmeier/Documents/GitHub/Ranch-Work-Landing-Page/images/DanUtah.jpg') no-repeat;
+                  url('images/DanUtah.jpg') no-repeat;
       background-size: cover;
       background-position: center top; 
       display: flex;
@@ -87,20 +88,16 @@
     ul { padding-left: 20px; }
     li { margin-bottom: 8px; }
 
-    .video, .resume-viewer {
+    .video {
       margin: 40px 0;
       background: #000000;
       position: relative;
-      border: 1px solid var(--border-gray);
-    }
-
-    .video {
-      padding-bottom: 56.25%; /* 16:9 */
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
       height: 0;
       overflow: hidden;
     }
 
-    .video iframe, .resume-viewer iframe {
+    .video iframe {
       position: absolute;
       top: 0;
       left: 0;
@@ -109,14 +106,10 @@
       border: none;
     }
 
-    .resume-viewer {
-      height: 600px;
-    }
-
     .btn-container {
-      text-align: left; /* Changed from center to left */
+      text-align: left;
       margin-top: 20px;
-      margin-bottom: 40px; /* Adds space before the next section */
+      margin-bottom: 40px;
     }
 
     .download-btn {
@@ -145,13 +138,30 @@
       border-left: 5px solid var(--rust);
     }
 
+    .social-links {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .social-links a {
+      color: var(--earth-black);
+      font-size: 24px;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      color: var(--rust);
+    }
+
     @media (max-width: 600px) {
       .container { 
         margin-top: 0; 
         padding: 30px 20px; 
       }
       .hero { height: 50vh; }
-      .resume-viewer { display: none; } /* Hide iframe on mobile, keep download button */
     }
   </style>
 </head>
@@ -159,7 +169,7 @@
 
   <header class="hero">
     <div class="hero-content">
-      <h1></h1>
+      <h1>Reliable and Ready to Relocate</h1>
     </div>
   </header>
 
@@ -167,7 +177,7 @@
     <p style="font-size: 20px; font-style: italic;">
       <strong>Hi, I'm Dan.</strong>
       <strong>Reliable, disciplined, and ready to put in the work.</strong>
-      Currently based in Denver and relocating this year, I am transitioning from a decade in design to dedicated 
+      Currently based in Denver and actively looking to relocate, I am transitioning from a decade in design to dedicated 
       outdoor&nbsp;labor. I bring a grit-first mentality, proven physical stamina, and a quick-learning 
       mind for solving problems in the&nbsp;field. 
     </p>
@@ -195,9 +205,15 @@
     </div>
 
     <div class="contact-info">
-      <h3>Contact me at...</h3>
+      <h3>Ready to discuss an opportunity?</h3>
       <p>Email: <strong>danielstevenmeier@gmail.com</strong></p> 
       <p>Phone: <strong>(983) 456-9182</strong></p>
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/dan-meier-16185352/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/dsmeier/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@dsmeier" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
     </div>
   </div>
 
