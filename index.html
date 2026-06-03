@@ -24,6 +24,10 @@
       --border: #e5e7eb;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
@@ -37,6 +41,93 @@
       font-family: 'Arvo', serif;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+    }
+
+    [id] {
+      scroll-margin-top: clamp(88px, 12vh, 140px);
+    }
+
+    .page-nav {
+      position: fixed;
+      right: max(8px, calc((100vw - 1240px) / 2));
+      top: 50%;
+      z-index: 20;
+      opacity: 0.72;
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: opacity 0.2s ease;
+    }
+
+    .page-nav:hover,
+    .page-nav:focus-within {
+      opacity: 1;
+    }
+
+    .page-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin: 0;
+      padding: 5px;
+      list-style: none;
+      background: rgba(252,252,251,0.68);
+      border: 1px solid rgba(229,231,235,0.52);
+      border-radius: 4px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.065);
+      backdrop-filter: blur(8px);
+      pointer-events: auto;
+    }
+
+    .page-nav a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 26px;
+      padding: 5px 7px;
+      color: var(--deep-slate);
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.2;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .page-nav a::before {
+      content: "";
+      width: 4px;
+      height: 4px;
+      flex: 0 0 4px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      opacity: 0.45;
+    }
+
+    .page-nav a:hover {
+      background: rgba(107,122,109,0.085);
+      color: var(--sage);
+    }
+
+    .page-nav a:focus-visible,
+    .hero-btn:focus-visible,
+    .download-btn:focus-visible,
+    .contact-card a:focus-visible,
+    .social-links a:focus-visible {
+      outline: 3px solid rgba(107,122,109,0.42);
+      outline-offset: 3px;
+    }
+
+    .page-nav a.is-active {
+      background: rgba(107,122,109,0.12);
+      color: var(--deep-slate);
+      font-weight: 700;
+      box-shadow: inset 2px 0 0 var(--clay);
+    }
+
+    .page-nav a.is-active::before {
+      background: currentColor;
+      opacity: 1;
     }
 
     .hero {
@@ -56,7 +147,7 @@
 
     .hero-content {
       max-width: 900px;
-      padding: 0 24px;
+      padding: clamp(24px, 5vh, 48px) 24px 0;
     }
 
     .hero h1 {
@@ -71,6 +162,62 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       opacity: 0.9;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.6;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.45);
+    }
+
+    .hero-micro-caption {
+  max-width: 620px;
+  margin: 18px auto 64px;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.86;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.45);
+}
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--deep-slate);
+      padding: 15px 26px;
+      text-decoration: none;
+      font-family: 'Arvo', serif;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .hero-btn:hover {
+      background: var(--sage);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .hero-btn.secondary {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.75);
+      color: #fff;
+    }
+
+    .hero-btn.secondary:hover {
+      background: #fff;
+      color: var(--deep-slate);
     }
 
     .container {
@@ -90,6 +237,77 @@
       border-left: 4px solid var(--sage);
       padding-left: 24px;
       margin-bottom: 40px;
+    }
+
+    .contribution-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .contribution-card {
+      background: #f9f9f8;
+      border-left: 4px solid var(--sage);
+      border-radius: 4px;
+      padding: 24px;
+    }
+
+    .contribution-card h3 {
+      color: var(--clay);
+      font-size: 14px;
+      margin: 0 0 12px;
+    }
+
+    .contribution-card p {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 0 0 10px;
+    }
+
+    .contribution-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contribution-label {
+      color: var(--deep-slate);
+      font-weight: 600;
+    }
+
+    .letter-block {
+      background: #f9f9f8;
+      border-left: 4px solid var(--clay);
+      border-radius: 4px;
+      margin-top: 24px;
+      padding: 30px;
+    }
+
+    .letter-block p {
+      color: #444;
+      font-size: 17px;
+      line-height: 1.7;
+      margin: 0 0 18px;
+    }
+
+    .letter-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .availability-list {
+      color: #444;
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .availability-list li {
+      margin-bottom: 8px;
+    }
+
+    .availability-list li:last-child {
+      margin-bottom: 0;
     }
 
     h2 {
@@ -118,6 +336,7 @@
     .image-container {
       flex: 1;
       width: 100%;
+      margin: 0;
       overflow: hidden;
       border-radius: 4px;
     }
@@ -127,6 +346,16 @@
       height: auto;
       display: block;
       object-fit: cover;
+    }
+
+    .image-caption {
+      background: #f9f9f8;
+      color: #555;
+      font-size: 14px;
+      font-style: italic;
+      line-height: 1.5;
+      margin: 0;
+      padding: 12px 14px;
     }
 
     .skill-grid {
@@ -146,6 +375,22 @@
       font-size: 16px;
       margin: 0;
       color: #555;
+    }
+
+    .skill-list {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 12px 0 0;
+      padding-left: 20px;
+    }
+
+    .skill-list li {
+      margin-bottom: 6px;
+    }
+
+    .skill-list li:last-child {
+      margin-bottom: 0;
     }
 
     .travel-strip {
@@ -219,6 +464,15 @@
       border-radius: 4px;
     }
 
+    .contact-card p a {
+      color: var(--deep-slate);
+      text-decoration: none;
+    }
+
+    .contact-card p a:hover {
+      color: var(--sage);
+    }
+
     .social-links {
       margin-top: 25px;
       display: flex;
@@ -249,6 +503,10 @@
       .skill-grid { 
         grid-template-columns: 1fr 1fr; 
       }
+
+      .contribution-grid {
+        grid-template-columns: 1fr 1fr;
+      }
       
       .cta-block { 
         flex-direction: row; 
@@ -262,7 +520,72 @@
       }
     }
 
+    @media (max-width: 1179px) {
+      body {
+        padding-bottom: 60px;
+      }
+
+      .page-nav {
+        right: 8px;
+        bottom: 8px;
+        left: 8px;
+        top: auto;
+        opacity: 0.98;
+        transform: none;
+      }
+
+      .page-nav-list {
+        flex-direction: row;
+        gap: 5px;
+        max-width: min(850px, calc(100vw - 16px));
+        margin: 0 auto;
+        overflow-x: auto;
+        padding: 5px;
+        background: rgba(252,252,251,0.92);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        scrollbar-width: none;
+      }
+
+      .page-nav-list::-webkit-scrollbar {
+        display: none;
+      }
+
+      .page-nav a {
+        min-height: 28px;
+        padding: 6px 9px;
+      }
+    }
+
     @media (max-width: 768px) {
+      .hero {
+        height: 70vh;
+        min-height: 500px;
+
+        /* Shift focal point toward where you are in the image */
+        background-position: 65% 20%;
+
+        /* Optional: show more of image vertically */
+        background-size: cover;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .hero-micro-caption {
+        font-size: 12px;
+      }
+
+      .hero-actions {
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .hero-btn {
+        width: min(100%, 280px);
+        box-sizing: border-box;
+      }
+
       .container { 
         margin-top: 0; 
         padding: 40px 20px; 
@@ -272,98 +595,313 @@
         margin: 40px -20px; 
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .page-nav a,
+      .page-nav,
+      .hero-btn,
+      .download-btn {
+        transition: none;
+      }
+    }
   </style>
 </head>
 <body>
 
+  <nav class="page-nav" aria-label="Page sections">
+    <ul class="page-nav-list">
+      <li><a href="#intro">Intro</a></li>
+      <li><a href="#contribute">Contribute</a></li>
+      <li><a href="#availability">Availability</a></li>
+      <li><a href="#outdoor-work">Outdoor Work</a></li>
+      <li><a href="#photography">Field Reliability</a></li>
+      <li><a href="#experience">Field Readiness</a></li>
+      <li><a href="#video">Journey</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <header class="hero">
     <div class="hero-content">
-      <p class="stats">41 Countries &bull; 10+ Years Professional Experience</p>
-      <h1>Hi, I’m Dan.</h1>
+      <p class="stats">10+ years professional experience &bull; Outdoor Operations</p>
+      <h1>Hello, I'm Dan.</h1>
+      <p class="hero-copy">Available for seasonal or long-term outdoor work.</p>
+      <div class="hero-actions">
+        <a href="DanMeier_Resume_OutdoorTravel_2026.pdf" target="_blank" class="hero-btn">View Resume</a>
+        <a href="#contact" class="hero-btn secondary">Contact Dan</a>
+      </div>
+      <p class="hero-micro-caption">Comfort in rugged places is part of the work I’m looking for, not just the scenery.</p>
     </div>
   </header>
 
   <div class="container">
-    <div class="intro-text">
-      Currently based in Colorado, I have always been driven by a deep curiosity for the world, from rugged backcountries to diverse cultural environments. Navigating 41 countries taught me how to stay level-headed, adaptable, and open-minded in any situation. After over a decade as a professional contractor, I am now following my passion for the field and the great outdoors, offering a mix of all-weather physical grit and a <strong>disciplined, reliable mind</strong> that is dedicated to supporting world-class destinations, protecting natural spaces, and helping others experience the beauty of this world and&nbsp;everything in it.
+    <div class="intro-text" id="intro">
+      Based in Colorado, I’m looking for hands-on outdoor work with ranches, grounds crews, and stewardship-focused properties. Travel through 41 countries taught me adaptability and how to embrace changing conditions.
+      <br><br>I enjoy practical problem-solving, physical work, and being part of a dependable team that takes pride in caring for places that matter.
     </div>
 
-    <h2>Global&nbsp;Perspective &amp; Field&nbsp;Reliability</h2>
-    <p>My journey has always been driven by a deep curiosity for the world, from rugged backcountries to diverse cultural environments. I’m excited to bring that curiosity and energy to your team, helping to keep operations running&nbsp;smoothly.</p>
+    <section class="contribution-section" id="contribute" aria-labelledby="contribution-heading">
+      <h2 id="contribution-heading">Where I Can&nbsp;Contribute</h2>
 
-    <div class="image-row">
-      <div class="image-container">
-        <img src="images/portrait-4shots_1.jpg" alt="Dan Meier cultural and travel experiences collage">
-      </div>
-      <div class="image-container">
-        <img src="images/portrait-4shots_3.jpg" alt="Dan Meier in the field: operational logistics and field work collage">
-      </div>
-    </div>
+      <div class="contribution-grid">
+        <div class="contribution-card">
+          <h3>Groundskeeper</h3>
+          <p><span class="contribution-label">Can help with:</span> Outdoor spaces, paths, lawns, plantings, cleanup, and guest-facing grounds.</p>
+          <p><span class="contribution-label">Fit:</span> Comfortable with long outdoor shifts, visible upkeep, landscaping exposure, and irrigation familiarity.</p>
+        </div>
 
-    <div class="travel-strip">
-      <h3>41 Countries&nbsp;Traveled</h3>
-      <p>
-        I thrive in adaptive, changing environments and love the challenge of keeping things moving. 
-        Whether it is managing or aiding in logistics in remote areas, maintaining infrastructure, 
-        or providing technical site support, I enjoy the hard work and stewardship that happens behind 
-        the scenes to make an operation, and an adventure, possible&nbsp;for&nbsp;others.
-      </p>
-    </div>
+        <div class="contribution-card">
+          <h3>Ranch Support</h3>
+          <p><span class="contribution-label">Can help with:</span> Property chores, setup, cleanup, hauling, small repairs, and daily support.</p>
+          <p><span class="contribution-label">Fit:</span> Ready for hands-on work, early starts, changing priorities, and learning how each ranch operates.</p>
+        </div>
 
-    <h2>Ready for the&nbsp;Field</h2>
-    <p>I believe in taking true ownership of my work, from technical maintenance to guest relations. I’m here 
-    to be a reliable, helpful hand in keeping your basecamp or property running beautifully and making sure 
-    everyone has &nbsp;memorable and enjoyable&nbsp;experiences.</p>
+        <div class="contribution-card">
+          <h3>Landscaping Crew</h3>
+          <p><span class="contribution-label">Can help with:</span> Planting, cleanup, irrigation checks, material moving, site prep, and seasonal care.</p>
+          <p><span class="contribution-label">Fit:</span> I like physical work with visible results and care about keeping outdoor spaces healthy.</p>
+        </div>
 
-    <div class="image-container">
-      <img src="images/portrait-4shots_2.jpg" alt="Dan Meier adventure and operational skill collage">
-    </div>
+        <div class="contribution-card">
+          <h3>Property Maintenance Support</h3>
+          <p><span class="contribution-label">Can help with:</span> Basic upkeep, cleaning, setup, small fixes, troubleshooting, and shared-space readiness.</p>
+          <p><span class="contribution-label">Fit:</span> Observant, dependable, organized, and willing to do the behind-the-scenes work.</p>
+        </div>
 
-    <div class="skill-grid">
-      <div class="skill-item">
-        <h3>Physical&nbsp;Energy</h3>
-        <p>Active bike courier in Denver; accustomed to 8+ hour shifts of high-intensity labor in everything from summer 
-        heat&nbsp;to&nbsp;snow.</p>
-      </div>
-      <div class="skill-item">
-        <h3>Technical&nbsp;Maintenance</h3>
-        <p>Hands-on experience with landscaping and irrigation. Comfortable troubleshooting the critical systems that 
-        keep outdoor properties&nbsp;operational.</p>
-      </div>
-      <div class="skill-item">
-        <h3>Professional&nbsp;Reliability</h3>
-        <p>A decade of professional experience means I'm punctual, self-motivated, and great at communicating with 
-        both teams&nbsp;and&nbsp;guests.</p>
-      </div>
-      <div class="skill-item">
-        <h3>Availability</h3>
-        <p>Relocating from Denver. <strong>Ready to join your team for seasonal or long-term roles starting 
-        July / August&nbsp;2026.</strong></p>
-      </div>
-    </div>
+        <div class="contribution-card">
+          <h3>Trail &amp; Outdoor Operations</h3>
+          <p><span class="contribution-label">Can help with:</span> Trails, outdoor programs, logistics, equipment, site readiness, and guest movement.</p>
+          <p><span class="contribution-label">Fit:</span> Comfortable in rugged settings and steady when weather, routes, or plans change.</p>
+        </div>
 
-    <h2>The Journey to&nbsp;Stewardship</h2>
-    <div class="video">
-      <iframe src="https://player.vimeo.com/video/1089382469?h=f20ea6cdaf&amp;controls=0&amp;background=0&amp;autopause=0&amp;loop=1&amp;quality=720p&amp;muted=1&amp;playsinline=1&amp;autoplay=1" title="Intro video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"></iframe>
-    </div>
+        <div class="contribution-card">
+          <h3>Guest Ranch Operations</h3>
+          <p><span class="contribution-label">Can help with:</span> Property readiness, guest support, back-of-house tasks, and steady service.</p>
+          <p><span class="contribution-label">Fit:</span> Friendly with guests, practical with tasks, and comfortable adapting to different people and places.</p>
+        </div>
+
+        <div class="contribution-card">
+          <h3>Outdoor Hospitality</h3>
+          <p><span class="contribution-label">Can help with:</span> Service, upkeep, logistics, team support, and clean, welcoming outdoor spaces.</p>
+          <p><span class="contribution-label">Fit:</span> I understand how much small details matter to guests and crews.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="availability-section" id="availability" aria-labelledby="availability-heading">
+      <h2 id="availability-heading">Availability&nbsp;&amp;&nbsp;Relocation</h2>
+      <div class="letter-block">
+        <ul class="availability-list">
+          <li><strong>Available starting August/September 2026</strong> for ranch, grounds, outdoor operations, or hospitality roles.</li>
+          <li>Open to seasonal work and longer-term opportunities if the fit is strong.</li>
+          <li>Willing to relocate from Colorado and comfortable living and working in rural environments.</li>
+          <li>Open to discussing housing needs and what each property can support.</li>
+          <li>Happy to contribute wherever needed: setup, cleanup, upkeep, guest support, grounds work, and behind-the-scenes tasks.</li>
+          <li>Looking to learn local systems, take direction well, and stay useful through the season.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="why-outdoor-section" id="outdoor-work" aria-labelledby="why-outdoor-heading">
+      <h2 id="why-outdoor-heading">Why Outdoor&nbsp;Work</h2>
+      <div class="letter-block">
+        <p>I’ve spent much of my professional life solving problems, organizing details, and communicating clearly. I also have formal training in how people interact with land, paths, planting, drainage, and outdoor environments.</p>
+
+        <p>Ranch and outdoor work appeals to me because it is direct. Things need to be fixed, cleaned, carried, checked, prepared, maintained, and cared for. I respect that steady work.</p>
+
+        <p>I’m not looking for a temporary adventure. I’m looking for a team, a property, and a season or longer where I can show up consistently, learn the systems, and be useful.</p>
+      </div>
+    </section>
+
+    <section class="photography-section" id="photography" aria-labelledby="photography-heading">
+      <h2 id="photography-heading">Travel as Field&nbsp;Reliability</h2>
+      <p>Travel matters here because it taught me to stay calm, useful, and respectful in unfamiliar places.</p>
+
+      <div class="image-row">
+        <figure class="image-container">
+          <img src="images/portrait-4shots_1.jpg" alt="Dan Meier cultural and travel experiences collage">
+          <figcaption class="image-caption">Independent travel built patience, adaptability, and steady communication.</figcaption>
+        </figure>
+        <figure class="image-container">
+          <img src="images/portrait-4shots_3.jpg" alt="Dan Meier in the field: operational logistics and field work collage">
+          <figcaption class="image-caption">Field logistics reinforced staying calm and prepared when plans change.</figcaption>
+        </figure>
+      </div>
+
+      <div class="travel-strip">
+        <h3>41 Countries&nbsp;Traveled</h3>
+        <p>
+          I’m comfortable in changing environments and enjoy the work behind good outdoor experiences: logistics, site upkeep, and noticing what a property needs.
+        </p>
+      </div>
+    </section>
+
+    <section class="experience-section" id="experience" aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Field&nbsp;Readiness</h2>
+      <p>I’m ready to be a reliable hand for property upkeep, guest support, and day-to-day outdoor operations.</p>
+
+      <figure class="image-container">
+        <img src="images/portrait-4shots_2.jpg" alt="Dan Meier adventure and operational skill collage">
+        <figcaption class="image-caption">The outdoors has always been where I feel most energized and at home.</figcaption>
+      </figure>
+
+      <div class="skill-grid">
+        <div class="skill-item">
+          <h3>Physical&nbsp;Work</h3>
+          <p>Active bike courier in Denver; used to long, high-output days.</p>
+          <ul class="skill-list">
+            <li>8+ hour shifts of physical work</li>
+            <li>Hauling and load-carrying support</li>
+            <li>Early starts, long days, and consistent pace</li>
+          </ul>
+        </div>
+        <div class="skill-item">
+          <h3>Property&nbsp;&amp;&nbsp;Grounds</h3>
+          <p>Hands-on exposure to landscaping and irrigation.</p>
+          <ul class="skill-list">
+            <li>Landscaping support and site cleanup</li>
+            <li>Irrigation exposure and basic troubleshooting</li>
+            <li>Property upkeep for guest-facing spaces</li>
+          </ul>
+        </div>
+        <div class="skill-item">
+          <h3>Reliability</h3>
+          <p>Dependable client-facing work taught punctuality, communication, and follow-through.</p>
+          <ul class="skill-list">
+            <li>Self-motivated and easy to direct</li>
+            <li>Clear communication with teams and guests</li>
+            <li>Ready to stay through seasonal or long-term roles</li>
+          </ul>
+        </div>
+        <div class="skill-item">
+          <h3>Outdoor&nbsp;Conditions</h3>
+          <p>Comfortable working outside in changing weather.</p>
+          <ul class="skill-list">
+            <li>All-weather work from summer heat to snow</li>
+            <li>Comfort in rugged and changing environments</li>
+            <li>Calm and adaptable when plans change</li>
+          </ul>
+        </div>
+        <div class="skill-item">
+          <h3>Operations&nbsp;Support</h3>
+          <p>Ready to help with the behind-the-scenes work that keeps a property running.</p>
+          <ul class="skill-list">
+            <li>Setup, cleanup, and property readiness</li>
+            <li>Trail and outdoor operations support</li>
+            <li>Equipment setup, checks, and team support</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section" id="video" aria-labelledby="video-heading">
+      <h2 id="video-heading">The Journey to&nbsp;Stewardship</h2>
+      <div class="video">
+        <iframe src="https://player.vimeo.com/video/1089382469?h=f20ea6cdaf&amp;controls=0&amp;background=0&amp;autopause=0&amp;loop=1&amp;quality=720p&amp;muted=1&amp;playsinline=1&amp;autoplay=1" title="Intro video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"></iframe>
+      </div>
+    </section>
 
     <div class="cta-block">
-      <p><em>Looking for a positive, hardworking addition to your team or&nbsp;destination?</em></p>
-      <a href="DanMeier_Resume_OutdoorTravel_2026.pdf" target="_blank" class="download-btn">View Full CV&nbsp;(PDF)</a>
+      <p><em>Hiring for ranch, grounds, outdoor operations, stewardship, or guest support?</em></p>
+      <a href="DanMeier_Resume_OutdoorTravel_2026.pdf" target="_blank" class="download-btn">View Resume&nbsp;(PDF)</a>
     </div>
 
-    <div class="contact-card">
-      <h3>Let's&nbsp;Chat</h3>
-      <p>Email: <strong>danielstevenmeier@gmail.com</strong><br>
-      Phone: <strong>(983) 456-9182</strong></p>
+    <div class="contact-card" id="contact">
+      <h3>Contact&nbsp;Dan</h3>
+      <p>Email: <strong><a href="mailto:danielstevenmeier@gmail.com">danielstevenmeier@gmail.com</a></strong><br>
+      Phone: <strong><a href="tel:+19834569182">(983) 456-9182</a></strong></p>
 
       <div class="social-links">
-        <a href="https://www.linkedin.com/in/dan-meier-16185352/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.instagram.com/dsmeier/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.youtube.com/@dsmeier" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/dan-meier-16185352/" target="_blank" aria-label="Dan Meier on LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/dsmeier/" target="_blank" aria-label="Dan Meier on Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@dsmeier" target="_blank" aria-label="Dan Meier on YouTube"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
   </div>
+
+  <script>
+    const sectionNavLinks = Array.from(document.querySelectorAll('.page-nav a'));
+    const sectionTargets = sectionNavLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+    let activeSectionFrame = null;
+
+    function setActiveSection(id) {
+      sectionNavLinks.forEach((link) => {
+        const isActive = link.getAttribute('href') === `#${id}`;
+        link.classList.toggle('is-active', isActive);
+
+        if (isActive) {
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    function updateActiveSection() {
+      if (!sectionTargets.length) return;
+
+      const activationLine = window.innerHeight * 0.34;
+      const pageBottom = window.scrollY + window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      let activeTarget = sectionTargets[0];
+
+      if (pageBottom >= documentHeight - 4) {
+        activeTarget = sectionTargets[sectionTargets.length - 1];
+      } else {
+        sectionTargets.forEach((section) => {
+          const sectionTop = section.getBoundingClientRect().top;
+
+          if (sectionTop <= activationLine) {
+            activeTarget = section;
+          }
+        });
+      }
+
+      setActiveSection(activeTarget.id);
+    }
+
+    function requestActiveSectionUpdate() {
+      if (activeSectionFrame) return;
+
+      activeSectionFrame = window.requestAnimationFrame(() => {
+        activeSectionFrame = null;
+        updateActiveSection();
+      });
+    }
+
+    if (sectionTargets[0]) {
+      updateActiveSection();
+    }
+
+    if ('IntersectionObserver' in window) {
+      const sectionObserver = new IntersectionObserver(() => {
+        requestActiveSectionUpdate();
+      }, {
+        rootMargin: '-24% 0px -62% 0px',
+        threshold: [0, 0.01, 0.1]
+      });
+
+      sectionTargets.forEach((section) => sectionObserver.observe(section));
+    }
+
+    sectionNavLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        const targetId = link.getAttribute('href').slice(1);
+        setActiveSection(targetId);
+      });
+    });
+
+    window.addEventListener('scroll', requestActiveSectionUpdate, { passive: true });
+    window.addEventListener('resize', requestActiveSectionUpdate);
+    window.addEventListener('hashchange', requestActiveSectionUpdate);
+    window.addEventListener('load', updateActiveSection);
+  </script>
 
 </body>
 </html>

@@ -1,0 +1,9 @@
+{
+  "name": "ranch-work-landing-page",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static HTML landing page for ranch and outdoor work.",
+  "scripts": {
+    "dev": "python3 -m http.server 5173 --bind 127.0.0.1"
+  }
+}
